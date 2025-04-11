@@ -1,0 +1,19 @@
+{
+  "name": "portfolio-nassari",
+  "version": "0.0.1",
+  "main": "app.js",
+  "author": "fatemeh nassari",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "joi": "^17.13.3",
+    "mongoose": "^8.13.2",
+    "multer": "^1.4.5-lts.2"
+  }
+}
