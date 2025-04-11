@@ -9,8 +9,9 @@ The portfolio is currently live and can be viewed at:
 [https://fatemehnassari.liara.run/](https://fatemehnassari.liara.run/)
 
 ## 💻 Technology Stack
-- **Backend**: Node.js
+- **Backend**: Node.js - express
 - **Database**: MongoDB
+- **validation**: JOI
 
 ## 💌 Want the Admin Panel Template?
 If you're interested in getting the admin panel template for this project, feel free to email me!
