@@ -3,17 +3,32 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema({
     title: {
         type: String,
-        requires: true
+        required: true
+    },    
+    slug: {
+        type: String,
+        required: true,
+        unique: true
     },
     summary: {
         type: String,
         required: true
     },
-    keyTags: [String],
     description: {
         type: String,
-    }
+        required: true
+    },
+    tags: [String],
+    cover: {
+        type: String,
+    },    
+    lang: {
+        type: String,
+        enum: ['en', 'fa', 'ar']
+    },
+}, {
+    timestamps: true
 })
 
-const model = mongoose.model("projects", Schema);
-module.exports = model;
+const projectModel = mongoose.model("projects", Schema);
+module.exports = projectModel;

@@ -1,0 +1,1 @@
+exports.serverErrorHandle = (res, error) => res.status(500).json({message: "Internal server Error: \n " + error})

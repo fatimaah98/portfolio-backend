@@ -3,17 +3,20 @@ const cors = require("cors");
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const bodyParser = require('body-parser');
-
 const router = require('./routes/projects');
+const main_router = require('./routes/home');
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
 app.use(cors())
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
 
-app.use("/v1/projects", router)
+app.use("/api/v1/:lang/projects", router)
+app.use("/api/v1/:lang/home", (req, res, next) => {
+    req.lang = req.params.lang;
+    next()
+} ,main_router);
 
 const mongoUri = process.env.MONGOURI;
 

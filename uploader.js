@@ -4,7 +4,7 @@ const crypto = require("crypto");
 
 module.exports = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, "..", "public", "courses", "covers"));
+        cb(null, path.join(__dirname, "./static"));
     },
     filename: (req, file, cb) => {
         // const name = Date.now() + (Math.random() * 999);
