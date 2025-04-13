@@ -5,6 +5,8 @@ require('dotenv').config();
 
 const router = require('./routes/projects');
 const main_router = require('./routes/home');
+const auth_router = require('./routes/auth');
+
 
 const app = express();
 app.use(cors())
@@ -17,6 +19,7 @@ app.use("/api/v1/:lang/home", (req, res, next) => {
     req.lang = req.params.lang;
     next()
 } ,main_router);
+app.use("/api/v1/:lang/auth", auth_router)
 
 const mongoUri = process.env.MONGOURI;
 
