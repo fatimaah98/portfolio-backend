@@ -7,6 +7,7 @@ const projects_Schema = Joi.object({
     description: Joi.string().required(),
     tags: Joi.array().items(Joi.string()),
     cover: Joi.string(),
+    lang: Joi.string().required()
 })
 
 module.exports = projects_Schema;

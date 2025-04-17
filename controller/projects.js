@@ -14,12 +14,12 @@ exports.getAllProjects = async(req, res) => {
 exports.createProject = async(req, res) => {
     try {
         const {body, file} = req;
-        const cover = file.filename;
+        // const cover = file.filename;
         const isExistSlug = await projectModel.findOne({slug: body.slug});
         if(isExistSlug) {
             return res.status(460).json({message: "this slug is exsit! please choose another slug"})
         }
-        const createdProject = await projectModel.create({...body, cover});
+        const createdProject = await projectModel.create({...body});
         return res.status(201).json({createdProject})
     } 
     catch (error) {
