@@ -5,8 +5,13 @@ const { serverErrorHandle } = require("../utils/server-error");
 exports.setData = async(req, res) => {
     try {
         const {body} = req;
-        await mainModel.create(body);
-        return res.status(201).json({message: "User Data Updated"})
+        const {lang} = body;
+        const isSavedLang = await mainModel.findOne({lang});
+        if(isSavedLang) {
+            return res.status(460).json({message: "you have data by this lang"})
+        }
+        const data = await mainModel.create(body);
+        return res.status(201).json({message: "User Data Updated", data})
     } 
     catch (error) {
         serverErrorHandle(res, error);

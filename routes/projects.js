@@ -16,8 +16,6 @@ router.post("/",
 router.get('/:slug', get1Project);
 router.put("/:id", 
     isAdmin,
-    multer({storage: coverStorage, limits: {fileSize: 10000000}}).single('cover') ,
-    (req, res, next) => isValidData(req, res, next, projects_Schema), 
     updateProject
 );
 

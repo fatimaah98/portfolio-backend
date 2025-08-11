@@ -2,18 +2,8 @@ const mongoose = require('mongoose');
 
 
 const schema = mongoose.Schema({
-    smortDefine:{
-        type: String,
-    },
-    myFavoriteWork:{
-        type: String,
-    },
-    exprience:{
-        type: String,
-    },
-    skills: [String],
-    goals:{
-        type: String,
+    description: {
+        type: String
     },
     github:{
         type: String,
@@ -24,12 +14,6 @@ const schema = mongoose.Schema({
     lang: {
         type: String,
         enum: ['en', 'fa', 'ar']
-    },
-    welcome: {
-        type: String
-    },
-    name: {
-        type: String,
     }
 }, {
     timestamps: true

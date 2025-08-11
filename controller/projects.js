@@ -13,8 +13,7 @@ exports.getAllProjects = async(req, res) => {
 
 exports.createProject = async(req, res) => {
     try {
-        const {body, file} = req;
-        // const cover = file.filename;
+        const {body} = req;
         const isExistSlug = await projectModel.findOne({slug: body.slug});
         if(isExistSlug) {
             return res.status(460).json({message: "this slug is exsit! please choose another slug"})
@@ -44,14 +43,13 @@ exports.get1Project = async(req, res) => {
 exports.updateProject = async(req, res) => {
     try {
         const {id} = req.params;
-        const {description, title, summary, tags, slug} = req.body;
-        const cover = req.file.filename;
+        const {description, title, summary, tags, cover} = req.body;
 
         const project = await projectModel.findOneAndUpdate({_id: id}, {
-            description, title, summary, tags, cover, slug
+            description, title, summary, tags, cover
         });
         if(project) {
-            return res.status(200).json({message: "Project Updated"})
+            return res.status(200).json({message: "Project Updated", project})
         }
         else {
             return res.status(404).json({message: "ID not founded"});
