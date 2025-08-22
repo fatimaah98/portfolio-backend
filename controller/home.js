@@ -20,8 +20,7 @@ exports.setData = async(req, res) => {
 
 exports.getData = async(req, res) => {
     try {
-        const {lang} = req;
-        const data = await mainModel.findOne({lang});
+        const data = await mainModel.find({}).lean();
         return res.status(200).json(data);
     } 
     catch (error) {

@@ -10,8 +10,12 @@ exports.isAdmin = async(req, res, next) => {
         }
 
         const token = authorization.split(" ")[1];
-        const {id} = JWT.verify(token, process.env.SECRETTOKEN)        
+        const {id} = JWT.verify(token, process.env.SECRETTOKEN)     
         const user = await authModel.findById(id, '-password')
+        
+        if(!user) {
+            return res.status(401).json({message: "please login first!"})
+        }
         
         if(user.role == 'admin') {
             req.user = user;
@@ -22,6 +26,6 @@ exports.isAdmin = async(req, res, next) => {
         }
     } 
     catch (error) {
-        return res.status(401).json({message: "error 500", error});    
+        return res.status(500).json({message: "error 500", error});    
     }
 }

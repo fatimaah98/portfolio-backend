@@ -6,7 +6,7 @@ const projects_Schema = Joi.object({
     summary: Joi.string().max(255).required(),
     description: Joi.string().required(),
     tags: Joi.array().items(Joi.string()),
-    cover: Joi.string(),
+    cover: Joi.string().min(0),
     lang: Joi.string().required()
 })
 

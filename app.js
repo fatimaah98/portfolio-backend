@@ -13,7 +13,6 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-
 app.use("/api/v1/:lang/projects", router)
 app.use("/api/v1/:lang/home", (req, res, next) => {
     req.lang = req.params.lang;
@@ -21,6 +20,7 @@ app.use("/api/v1/:lang/home", (req, res, next) => {
 } ,main_router);
 app.use("/api/v1/:lang/auth", auth_router)
 app.use("/api/v1/:lang/blogs", blog_router);
+app.use("/", (req, res) => res.status(200).json({message: "welcome to my world :)"}))
 
 const mongoUri = process.env.MONGOURI;
 
