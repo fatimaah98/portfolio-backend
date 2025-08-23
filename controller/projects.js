@@ -59,3 +59,17 @@ exports.updateProject = async(req, res) => {
         return res.status(500).json({message: "Internal server Error: \n " + error});
     }
 };
+
+exports.deleteOne = async(req, res) => {
+    try {
+        const {id} = req.params;
+        const isProjectExist = await projectModel.deleteOne({_id: id});
+
+        if(!isProjectExist) {
+            return res.status(460).json({message: "the project doesn't exist!"});
+        }
+        return res.status(200).json({message: "project removed from data base!"})
+    } catch (error) {
+        return res.status(500).json({message: "error form remove: ", error});
+    }
+}

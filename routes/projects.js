@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAllProjects, createProject, get1Project, updateProject } = require('../controller/projects');
+const { getAllProjects, createProject, get1Project, updateProject, deleteOne } = require('../controller/projects');
 const { isAdmin } = require('../middlewares/isAdmin');
 const router = express.Router();
 const multer = require("multer");
@@ -18,5 +18,5 @@ router.put("/:id",
     isAdmin,
     updateProject
 );
-
+router.delete("/:id", isAdmin, deleteOne);
 module.exports = router
