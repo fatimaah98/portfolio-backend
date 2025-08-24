@@ -41,7 +41,6 @@ exports.get1Project = async(req, res) => {
 };
 
 exports.updateProject = async(req, res) => {
-    console.log("object");
     try {
         const {id} = req.params;
         const cover = `./static/${req.file.filename}`;
