@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require("cors");
 const mongoose = require('mongoose');
+const path = require("path");
 require('dotenv').config();
 
 const router = require('./routes/projects');
@@ -20,6 +21,7 @@ app.use("/api/v1/:lang/home", (req, res, next) => {
 } ,main_router);
 app.use("/api/v1/:lang/auth", auth_router)
 app.use("/api/v1/:lang/blogs", blog_router);
+app.use("/static", express.static(path.join(__dirname, "static")))
 app.use("/", (req, res) => res.status(200).json({message: "welcome to my world :)"}))
 
 const mongoUri = process.env.MONGOURI;

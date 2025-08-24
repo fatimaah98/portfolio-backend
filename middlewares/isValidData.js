@@ -9,6 +9,6 @@ exports.isValidData = async(req, res, next, schema) => {
         }
     } 
     catch (error) {
-        return res.status(460).json({message: "The FormData Is Not Valid!", error})    
+        return res.status(500).json({message: "The FormData Is Not Valid!", error})    
     }
 }

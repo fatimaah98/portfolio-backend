@@ -10,12 +10,14 @@ const projects_Schema = require('../validators/project');
 router.get('/', getAllProjects);
 router.post("/", 
     isAdmin, 
+    multer({storage: coverStorage, limits: {fileSize: 10000000}}).single('cover'),
     (req, res, next) => isValidData(req, res, next, projects_Schema),
     createProject
 );
 router.get('/:slug', get1Project);
 router.put("/:id", 
     isAdmin,
+    multer({storage: coverStorage, limits: {fileSize: 10000000}}).single('cover'),
     updateProject
 );
 router.delete("/:id", isAdmin, deleteOne);

@@ -13,7 +13,7 @@ exports.getAllProjects = async(req, res) => {
 
 exports.createProject = async(req, res) => {
     try {
-        const {body} = req;
+        const body = {...req.body, cover: `./static/${req.file.filename}`}
         const isExistSlug = await projectModel.findOne({slug: body.slug});
         if(isExistSlug) {
             return res.status(460).json({message: "this slug is exsit! please choose another slug"})
@@ -41,9 +41,11 @@ exports.get1Project = async(req, res) => {
 };
 
 exports.updateProject = async(req, res) => {
+    console.log("object");
     try {
         const {id} = req.params;
-        const {description, title, summary, tags, cover} = req.body;
+        const cover = `./static/${req.file.filename}`;
+        const {description, title, summary, tags} = req.body;
 
         const project = await projectModel.findOneAndUpdate({_id: id}, {
             description, title, summary, tags, cover
